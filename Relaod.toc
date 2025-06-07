@@ -1,7 +1,10 @@
 ## Interface: 110105
 ## Title: /Relaod
 ## Notes: Adds /relaod and /r commands to reload the UI
+## Version: @project-version@
 ## Author: Braunerr
-## Version: 1.0
+## IconTexture: Interface\AddOns\MrMythical\Logo.tga
+## X-Curse-Project-ID: 1281677
+## X-Wago-ID: kZKbeLR61
 
 Relaod.lua
