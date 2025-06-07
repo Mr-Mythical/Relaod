@@ -1,2 +1,2 @@
 # Relaod
-Small World of Warcraft addon that adds additional commands to reload the game
+Sometimes i spell /reload a little too quick now it doesnt matter, also adds /r
