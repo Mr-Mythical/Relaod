@@ -1,0 +1,7 @@
+## Interface: 110105
+## Title: /Relaod
+## Notes: Adds /relaod and /r commands to reload the UI
+## Author: Braunerr
+## Version: 1.0
+
+Relaod.lua
