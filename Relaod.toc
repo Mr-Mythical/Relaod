@@ -7,4 +7,4 @@
 ## X-Curse-Project-ID: 1281677
 ## X-Wago-ID: ZKbeLR61
 
-Relaod.lua
+Core.lua
