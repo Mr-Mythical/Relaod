@@ -1,2 +1,2 @@
 # Relaod
-Sometimes i spell /reload a little too quick now it doesnt matter, also adds /r
+Sometimes i spell /reload a little too quick now it doesnt matter

@@ -1,6 +1,6 @@
 ## Interface: 110107, 40402
 ## Title: /Relaod
-## Notes: Adds /relaod and /rl commands to reload the UI
+## Notes: Adds /relaod command to reload the UI
 ## Version: @project-version@
 ## Author: Braunerr
 ## IconTexture: Interface\AddOns\Relaod\Logo.tga
