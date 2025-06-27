@@ -1,8 +1,8 @@
 ## Interface: 110107, 40402
 ## Title: /Relaod
 ## Notes: Adds /relaod command to reload the UI
-## Version: 1.0.0
-## Author: Mr. Mythical
+## Version: @project-version@
+## Author: Braunerr
 ## IconTexture: Interface\AddOns\Relaod\Logo.tga
 ## X-Curse-Project-ID: 1281677
 ## X-Wago-ID: ZKbeLR61
