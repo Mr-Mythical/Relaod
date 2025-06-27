@@ -1,22 +1,27 @@
+--[[
+Core.lua - Relaod Addon Core Logic
+
+Purpose: Provides /relaod command for UI reloading with customizable options
+Dependencies: Options module
+Author: Braunerr
+--]]
+
 local Relaod = Relaod or {}
 
--- Event frame for addon initialization
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:RegisterEvent("PLAYER_LOGIN")
 
 eventFrame:SetScript("OnEvent", function(self, event, addonName)
     if event == "ADDON_LOADED" and addonName == "Relaod" then
-        -- Initialize options when addon loads
         if Relaod.Options then
             Relaod.Options.initializeSettings()
         end
     elseif event == "PLAYER_LOGIN" then
-        -- Ensure slash commands are set up after login
         if Relaod.Options then
-            Relaod.Options.updateSlashCommands()        else
-            -- Fallback: Set up default slash command if options aren't available
-            SLASH_RELAOD1 = '/relaod'
+            Relaod.Options.updateSlashCommands()
+        else
+            SLASH_RELAOD1 = '/relaod'  -- Fallback if options unavailable
             SlashCmdList["RELAOD"] = function()
                 ReloadUI()
             end

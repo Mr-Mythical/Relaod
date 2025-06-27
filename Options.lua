@@ -1,3 +1,11 @@
+--[[
+Options.lua - Relaod Settings Integration
+
+Purpose: Handles settings UI and slash command configuration
+Dependencies: None
+Author: Braunerr
+--]]
+
 local Relaod = Relaod or {}
 local Options = {}
 
@@ -15,11 +23,9 @@ local function createSetting(category, name, key, defaultValue, tooltip)
 end
 
 function Options.updateSlashCommands()
-    -- Clear existing slash commands
     SLASH_RELAOD1 = nil
     SlashCmdList["RELAOD"] = nil
     
-    -- Re-register enabled commands
     if Relaod_SavedVars.ENABLE_RELAOD_COMMAND then
         SLASH_RELAOD1 = '/relaod'
         SlashCmdList["RELAOD"] = function()
@@ -41,11 +47,12 @@ function Options.initializeSettings()
     end
 
     if not Settings or not Settings.RegisterVerticalLayoutCategory then
-        print("Relaod: Settings API not found. Options unavailable via Interface menu.")
+        showMessage("Settings API not found. Options unavailable via Interface menu.", "warning")
         return
     end
 
-    local category = Settings.RegisterVerticalLayoutCategory("Relaod", "Relaod")
+    local category = Settings.RegisterVerticalLayoutCategory("/Relaod")
+    Settings.RegisterAddOnCategory(category)
 
     local headerData = {
         name = "Slash Command Options",
@@ -62,10 +69,7 @@ function Options.initializeSettings()
         true,
         "Enable the /relaod slash command to reload the UI."
     )
-
-    Settings.RegisterAddOnCategory(category)
     
-    -- Apply initial settings
     Options.updateSlashCommands()
 end
 
