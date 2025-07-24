@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="RELAOD_RELOAD" category="Reload the UI">
+        ReloadUI();
+    </Binding>
+</Bindings>

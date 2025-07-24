@@ -6,6 +6,9 @@ Dependencies: Options module
 Author: Braunerr
 --]]
 
+BINDING_HEADER_RELAOD = "Relaod"
+BINDING_NAME_RELAOD_RELOAD = "Reload UI"
+
 local Relaod = Relaod or {}
 
 local eventFrame = CreateFrame("Frame")
