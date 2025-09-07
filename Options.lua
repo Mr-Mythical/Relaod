@@ -46,11 +46,6 @@ function Options.initializeSettings()
         end
     end
 
-    if not Settings or not Settings.RegisterVerticalLayoutCategory then
-        showMessage("Settings API not found. Options unavailable via Interface menu.", "warning")
-        return
-    end
-
     local category = Settings.RegisterVerticalLayoutCategory("/Relaod")
     Settings.RegisterAddOnCategory(category)
 
