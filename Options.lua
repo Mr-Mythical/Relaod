@@ -1,11 +1,3 @@
---[[
-Options.lua - Relaod Settings Integration
-
-Purpose: Handles settings UI and slash command configuration
-Dependencies: None
-Author: Braunerr
---]]
-
 local Relaod = Relaod or {}
 local Options = {}
 

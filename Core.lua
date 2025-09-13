@@ -1,11 +1,3 @@
---[[
-Core.lua - Relaod Addon Core Logic
-
-Purpose: Provides /relaod command for UI reloading with customizable options
-Dependencies: Options module
-Author: Braunerr
---]]
-
 BINDING_NAME_RELAOD_RELOAD = "Reload UI"
 
 local Relaod = Relaod or {}
@@ -23,7 +15,7 @@ eventFrame:SetScript("OnEvent", function(self, event, addonName)
         if Relaod.Options then
             Relaod.Options.updateSlashCommands()
         else
-            SLASH_RELAOD1 = '/relaod'  -- Fallback if options unavailable
+            SLASH_RELAOD1 = '/relaod'
             SlashCmdList["RELAOD"] = function()
                 ReloadUI()
             end
