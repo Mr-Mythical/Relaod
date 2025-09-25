@@ -1,62 +1,32 @@
 local Relaod = Relaod or {}
 local Options = {}
 
-local function createSetting(category, name, key, defaultValue, tooltip)
-    local setting = Settings.RegisterAddOnSetting(category, name, key, Relaod_SavedVars, "boolean", name, defaultValue)
-    setting:SetValueChangedCallback(function(_, value)
-        Relaod_SavedVars[key] = value
-        Options.updateSlashCommands()
-    end)
-
-    local initializer = Settings.CreateCheckbox(category, setting, tooltip)
-    initializer:SetSetting(setting)
-
-    return { setting = setting, checkbox = initializer }
-end
-
 function Options.updateSlashCommands()
-    SLASH_RELAOD1 = nil
-    SlashCmdList["RELAOD"] = nil
-    
-    if Relaod_SavedVars.ENABLE_RELAOD_COMMAND then
-        SLASH_RELAOD1 = '/relaod'
-        SlashCmdList["RELAOD"] = function()
-            ReloadUI()
-        end
-    end
+    SLASH_RELAOD1 = Relaod_SavedVars.ENABLE_RELAOD_COMMAND and '/relaod' or nil
+    SlashCmdList["RELAOD"] = Relaod_SavedVars.ENABLE_RELAOD_COMMAND and function() ReloadUI() end or nil
 end
 
 function Options.initializeSettings()
-    local defaults = {
-        ENABLE_RELAOD_COMMAND = true
-    }
-
-    Relaod_SavedVars = Relaod_SavedVars or {}
-    for key, default in pairs(defaults) do
-        if Relaod_SavedVars[key] == nil then
-            Relaod_SavedVars[key] = default
-        end
+    Relaod_SavedVars = Relaod_SavedVars or { ENABLE_RELAOD_COMMAND = true }
+    if Relaod_SavedVars.ENABLE_RELAOD_COMMAND == nil then
+        Relaod_SavedVars.ENABLE_RELAOD_COMMAND = true
     end
 
     local category = Settings.RegisterVerticalLayoutCategory("/Relaod")
     Settings.RegisterAddOnCategory(category)
 
-    local headerData = {
-        name = "Slash Command Options",
-        tooltip = "Enable or disable the /relaod slash command for reloading the UI"
-    }
+    local headerData = { name = "Slash Command Options", tooltip = "Enable or disable the /relaod slash command for reloading the UI" }
     local headerInitializer = Settings.CreateElementInitializer("SettingsListSectionHeaderTemplate", headerData)
-    local layout = SettingsPanel:GetLayout(category)
-    layout:AddInitializer(headerInitializer)
+    SettingsPanel:GetLayout(category):AddInitializer(headerInitializer)
 
-    createSetting(
-        category,
-        "Enable /relaod Command",
-        "ENABLE_RELAOD_COMMAND",
-        true,
-        "Enable the /relaod slash command to reload the UI."
-    )
-    
+    local setting = Settings.RegisterAddOnSetting(category, "Enable /relaod Command", "ENABLE_RELAOD_COMMAND", Relaod_SavedVars, "boolean", "Enable /relaod Command", true)
+    setting:SetValueChangedCallback(function(_, value)
+        Relaod_SavedVars.ENABLE_RELAOD_COMMAND = value
+        Options.updateSlashCommands()
+    end)
+    local initializer = Settings.CreateCheckbox(category, setting, "Enable the /relaod slash command to reload the UI.")
+    initializer:SetSetting(setting)
+
     Options.updateSlashCommands()
 end
 
