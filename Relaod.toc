@@ -1,4 +1,4 @@
-## Interface: 120000, 110207, 50500, 11507
+## Interface: 120001, 50500, 11507
 ## Title: /Relaod
 ## Notes: Adds /relaod command to reload the UI
 ## Version: @project-version@
